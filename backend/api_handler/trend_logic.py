@@ -6,7 +6,7 @@ Contains general comparison logic for trends.
 """
 
 from datetime import datetime, timedelta
-from .crypto_api import get_crypto_price, get_crypto_price_on_date
+from api_handler.crypto_api import get_crypto_price, get_crypto_price_on_date
 
 
 def compare_crypto(coin_id="bitcoin", vs_currency="usd", period="day"):

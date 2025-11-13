@@ -1,66 +1,27 @@
 # backend/app.py
 from flask import Flask, jsonify, request
-from api_handler.trend_logic import compare_crypto
+from api_handler.manager import compare_trend
 
 app = Flask(__name__)
+from flask_cors import CORS
+CORS(app)
 
-@app.route("/api/crypto-trend", methods=["GET"])
-def crypto_trend():
+
+@app.route("/api/trend", methods=["GET"])
+def trend():
     """
-    Example usage:
-    /api/crypto-trend?coin=bitcoin&vs=usd&period=year
+    General API for comparing trends.
+    Examples:
+      /api/trend?type=crypto&coin=bitcoin&period=month
+      /api/trend?type=weather&lat=31.78&lon=35.22&period=year
     """
-    coin = request.args.get("coin", "bitcoin")
-    vs = request.args.get("vs", "usd")
-    period = request.args.get("period", "day")
-    result = compare_crypto(coin, vs, period)
+    data_type = request.args.get("type", "crypto")
+    kwargs = request.args.to_dict()  # all params
+    result = compare_trend(data_type, **kwargs)
     return jsonify(result)
 
 if __name__ == "__main__":
-    print("🚀 Flask server running... Visit:")
-    print("http://127.0.0.1:5000/api/crypto-trend?coin=bitcoin&vs=usd&period=day")
-    app.run(debug=True)
-# backend/app.py
-from flask import Flask, jsonify, request
-from api_handler.trend_logic import compare_crypto
-
-app = Flask(__name__)
-
-@app.route("/api/crypto-trend", methods=["GET"])
-def crypto_trend():
-    """
-    Example usage:
-    /api/crypto-trend?coin=bitcoin&vs=usd&period=year
-    """
-    coin = request.args.get("coin", "bitcoin")
-    vs = request.args.get("vs", "usd")
-    period = request.args.get("period", "day")
-    result = compare_crypto(coin, vs, period)
-    return jsonify(result)
-
-if __name__ == "__main__":
-    print("🚀 Flask server running... Visit:")
-    print("http://127.0.0.1:5000/api/crypto-trend?coin=bitcoin&vs=usd&period=day")
-    app.run(debug=True)
-# backend/app.py
-from flask import Flask, jsonify, request
-from api_handler.trend_logic import compare_crypto
-
-app = Flask(__name__)
-
-@app.route("/api/crypto-trend", methods=["GET"])
-def crypto_trend():
-    """
-    Example usage:
-    /api/crypto-trend?coin=bitcoin&vs=usd&period=year
-    """
-    coin = request.args.get("coin", "bitcoin")
-    vs = request.args.get("vs", "usd")
-    period = request.args.get("period", "day")
-    result = compare_crypto(coin, vs, period)
-    return jsonify(result)
-
-if __name__ == "__main__":
-    print("🚀 Flask server running... Visit:")
-    print("http://127.0.0.1:5000/api/crypto-trend?coin=bitcoin&vs=usd&period=day")
+    print("🚀 Server ready:")
+    print("http://127.0.0.1:5000/api/trend?type=crypto&coin=bitcoin")
+    print("http://127.0.0.1:5000/api/trend?type=weather&lat=31.78&lon=35.22&period=day")
     app.run(debug=True)

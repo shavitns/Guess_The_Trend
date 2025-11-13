@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess The Trend</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- 🔹 Header -->
+    <header>
+        <h1>Guess The Trend</h1>
+        <p class="subtitle">Can you predict what’s rising and what’s falling?</p>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Play</a>
+            <a href="#">Statistics</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <!-- 🔹 Hero Section -->
+    <section class="hero">
+        <h2>Choose your challenge 👇</h2>
+        <button class="main-btn">Start Playing</button>
+    </section>
+
+    <!-- 🔹 Games Section -->
+    <section class="games">
+        <div class="game-card">
+            <h3>🎯 Quick Quiz</h3>
+            <p>10 quick questions to test your intuition!</p>
+            <a href="quiz.html"><button>Start</button></a>
+        </div>
+
+        <div class="game-card">
+            <h3>🌍 By Category</h3>
+            <p>Select a topic – crypto, weather, or tech – and guess the trend!</p>
+            <a href="category.html"><button>Choose Category</button></a>
+        </div>
+
+        <div class="game-card">
+            <h3>📈 Visual Trends</h3>
+            <p>Explore real charts and make predictions based on data.</p>
+            <a href="charts.html"><button>View Charts</button></a>
+        </div>
+    </section>
+
+    <!-- 🔹 Live Charts Section -->
+    <section class="charts">
+        <h2>Trending Now 🔥</h2>
+        <div class="chart-container">
+            <canvas id="chart1"></canvas>
+            <canvas id="chart2"></canvas>
+            <canvas id="chart3"></canvas>
+        </div>
+    </section>
+
+    <!-- 🔹 Footer -->
+    <footer>
+        <p>© 2025 Guess The Trend | Made with ❤️</p>
+    </footer>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
